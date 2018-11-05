@@ -1,4 +1,5 @@
 Welcome to Shape Editor ------------------------
+
 The program allows you to draw and edit shapes in 3D, e.g. a space ship. 
 The shape can then be exported as a processing sketch.
 
@@ -21,6 +22,7 @@ In both modes you see a help text on the right side of the screen which shows yo
 To quit the program hit Z (Shift-Z)
 
 Instructions for Mode draw points -----------------------
+
 Click mouse to enter points.
 Right click mouse on a point to move it (xyz).
 Backspace to delete last item.
@@ -30,6 +32,7 @@ Hit e for connect mode.
 Hit Z to quit.
 
 Instructions for Mode draw shapes -----------------------
+
 Click mouse to connect points.
 Right click mouse on a point to move it (xyz).
 Backspace to delete last point from shape.
