@@ -1,5 +1,5 @@
 
-// depending from state these 3 functions are called from draw 
+// depending from state these functions are called from draw() 
 
 void drawForStateNormal() {
 
@@ -74,11 +74,12 @@ void drawForStateMainCube() {
 
   // show text / instructions
   showInstructions(MAIN_HELP);
-}
+} // func 
 
-void showSolution () {
+void drawForStateShowSolution() {
 
-  // shows a loaded solution 
+  // shows a loaded solution as cube. 
+  // Exploded View Drawing.
   // View like normal view but shows main cube (central and big) without the 6 pieces  
 
   // show target cube and Simulation cube
@@ -104,27 +105,38 @@ void showSolution () {
     width-200, 264 );
   fill(255);
   text(alFileName, 23, height-23);
-}//func 
+  text(errText, 223, height-23);
+  //
+} // func 
 
 void drawForStatePrepareSolve() {
   textAlign(CENTER); 
   textFont(pfont); 
   fill(255);
 
-  text ("This will take maybe 2 or 4 hours and the program is stuck during this time. "
+  text ("This will take maybe 3 or 4 minutes and the program is stuck during this time. "
     +"\nThe screen is not updated. For information see direct window.\n\n"
+    +"\n\n\n(please note that he also finds identical solutions which are just the rotated cube)\n\n"
     +"Do you want to continue?  \n\n\ny / n", 
     width/2, 220);
 
   textAlign(LEFT);
-}
+  String textSol1 = "\nHit k to change";
+  if (flagProgramFindsOnlyFirstSolution) 
+    text("finds only first solution"+textSol1, 
+      20, 200, 
+      width-300, 900);
+  else 
+  text("finds every solution"+textSol1, 
+    20, 200, 
+    width-300, 900);
+} // func 
 
 void drawForStateSolve() {
 
-  // SOLVER 
+  // SOLVER - takes approx. 4 minutes to one night 
 
   solve(); // see tab Solver1
-
   state=STATE_NORMAL;
 } // func 
 //

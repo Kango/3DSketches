@@ -7,7 +7,7 @@ String dateTimeStampShort() {
 String dateTimeStampLong() {
   // long version 
   return getDateLong()
-    + "_" 
+    + " at " 
     + getTimeLong();
 }
 

@@ -186,7 +186,7 @@ class MainCube {
 
   HashMap<Integer, PVector> getHashMapForPiecesPVectors() {
 
-    // analyze
+    // analyze and calculate PVector for Exploded_View_Drawing 
 
     PVector pvExploded_View_Drawing=new PVector();
 
@@ -194,9 +194,10 @@ class MainCube {
 
     HashMap<Integer, PVector > hashMap_pvExploded_View_Drawing = new HashMap<Integer, PVector>();
 
+    // the PVectors for the pieces 
     PVector[]pvExploded_View_DrawingList= { 
-      new PVector( -171, -112, 33.2), // turquoise
-      new PVector( 0, -102, 83.2), // green
+      new PVector( -171, -112, 33.2), // turquoise piece
+      new PVector( -30, -252, 199.2), // green priece 
       new PVector( 21, 182, -33.2), // red 
       new PVector( 0, 0, 410), // blue
       new PVector( 21, 212, 199), // aquamarine  
@@ -210,7 +211,7 @@ class MainCube {
 
           // do we have the color already?
           if (hashMap_pvExploded_View_Drawing.containsKey(col1)) {
-            // yes, old one
+            // yes, old one, do nothing
           } else 
           {
             // No, new color
@@ -265,7 +266,7 @@ class MainCube {
       }//for
     }//for
 
-    saveStrings ( "S"
+    saveStrings ( "Sol"
       +dateTimeStampShort()
       +".txt", a1 );
   }

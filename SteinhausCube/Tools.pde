@@ -1,55 +1,6 @@
 
 // general tools 
 
-void loadSolutionFile() {
-  mainCube.clear();
-  simulationCube.clear();
-  String name1 = alFiles.get(alFiles_i).getName();
-  if (name1.length()>4) {
-    if (name1.substring(name1.length()-4).equals(".txt")) { 
-      mainCube.load(name1);
-      alFileName=name1;
-    } else {
-      alFileName="could not read";
-    }
-  }
-}//func
-
-ArrayList<File> getFiles() {
-  String[] strList; 
-
-  ArrayList<File> alResult=new ArrayList(); 
-
-  // https://docs.oracle.com/javase/7/docs/api/java/io/File.html 
-  // https://stackoverflow.com/questions/1158777/rename-a-file-using-java
-
-  File f = dataFile( sketchPath("")); 
-  strList = f.list();
-  println ("found " + strList.length);
-
-  int i = 0;
-
-  for (File fileName : f.listFiles()) {
-    alResult.add(fileName);
-  } // for 
-
-  return alResult;
-}//func 
-
-String ejectStatus() {
-
-  String result=""; 
-
-  for (boolean b : explodeViewAllowed) {
-    if (b)
-      result+="y ";
-    else
-      result+="n ";
-  }//for
-
-  return result;
-}//func
-
 void checkNumberOfPieces() {
 
   // called only once from setup();

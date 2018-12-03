@@ -5,8 +5,6 @@ void solve() {
 
     // Solver 
 
-    println(dateTimeStampLong()); 
-
     //reset 
     mainCube.clear();
     simulationCube.clear();
@@ -16,49 +14,40 @@ void solve() {
     offsetY=0; 
     offsetZ=0; 
     
-    placeOnePiece();
+    solveHelper();
 
-    println("\nleaving solve. Found "
+    println(
+      "\nleaving solve. Found "
       +foundSolutions
-      +" solutions."); 
+      +" solution(s). Time: "
+      +dateTimeStampLong()
+      +"."); 
   //
 } //func
 
-void placeOnePiece() {
+void solveHelper() {
   //   
   // *******************************************
   // CODE automatic generated 
   // *******************************************
 
-
         // reset rotation
         resetRotation();
         simulationCube.clear();
      
-        // for ALL except the first
-        int valueToExploreStart=4;
-        int valueToExploreEnd=7;
-        
-        // for the first
-        int valueToExploreStart2=5;
-        int valueToExploreEnd2=7;
-        
-        // for the 2nd
-        int valueToExploreStart3=4;
-        int valueToExploreEnd3=6;
+        // for ALL for-loops for position 
+        int valueToExploreStart = 4; // 4  (4 to 6 not working, 5 to 7 not working)
+        int valueToExploreEnd   = 7; // 7            
 
- mainCube.clear();
   // rotate 
   for (int rotX0 = 0; rotX0 < 3; rotX0++) {
     for (int rotY0 = 0; rotY0 < 3; rotY0++) {
       for (int rotZ0 = 0; rotZ0 < 3; rotZ0++) {
   // move 
-  for (int xAdd0=valueToExploreStart2; xAdd0<valueToExploreEnd2; xAdd0++) {
-    for (int yAdd0=valueToExploreStart2; yAdd0<valueToExploreEnd2; yAdd0++) {
-      for (int zAdd0=valueToExploreStart2; zAdd0<valueToExploreEnd2; zAdd0++) {
+  for (int xPos0=valueToExploreStart; xPos0<valueToExploreEnd; xPos0++) {
+    for (int yPos0=valueToExploreStart; yPos0<valueToExploreEnd; yPos0++) {
+      for (int zPos0=valueToExploreStart; zPos0<valueToExploreEnd; zPos0++) {
 
-        print("1");
-        
  mainCube.clear();
  resetRotation();
         currPlacer = arrOfIL[0];
@@ -69,9 +58,9 @@ void placeOnePiece() {
         rotate_Times_Cmd(rotX0, 'q');
         rotate_Times_Cmd(rotY0, 'w');
         rotate_Times_Cmd(rotZ0, 'e');
-      offsetX=xAdd0;
-      offsetY=yAdd0;
-      offsetZ=zAdd0;
+      offsetX=xPos0;
+      offsetY=yPos0;
+      offsetZ=zPos0;
 
 // place piece inside SIM CUBE 
 if (pieces.get(currPlacer).simulateOK()) {
@@ -83,9 +72,9 @@ if ( simulationCube.copySimulationToMainCube() ) {
     for (int rotY1 = 0; rotY1 < 3; rotY1++) {
       for (int rotZ1 = 0; rotZ1 < 3; rotZ1++) {
   // move 
-  for (int xAdd1=valueToExploreStart3; xAdd1<valueToExploreEnd3; xAdd1++) {
-    for (int yAdd1=valueToExploreStart3; yAdd1<valueToExploreEnd3; yAdd1++) {
-      for (int zAdd1=valueToExploreStart3; zAdd1<valueToExploreEnd3; zAdd1++) {
+  for (int xPos1=valueToExploreStart; xPos1<valueToExploreEnd; xPos1++) {
+    for (int yPos1=valueToExploreStart; yPos1<valueToExploreEnd; yPos1++) {
+      for (int zPos1=valueToExploreStart; zPos1<valueToExploreEnd; zPos1++) {
 
  mainCube.clear();
  resetRotation();
@@ -97,9 +86,9 @@ if ( simulationCube.copySimulationToMainCube() ) {
         rotate_Times_Cmd(rotX0, 'q');
         rotate_Times_Cmd(rotY0, 'w');
         rotate_Times_Cmd(rotZ0, 'e');
-      offsetX=xAdd0;
-      offsetY=yAdd0;
-      offsetZ=zAdd0;
+      offsetX=xPos0;
+      offsetY=yPos0;
+      offsetZ=zPos0;
 
 // place piece inside SIM CUBE 
 if (pieces.get(currPlacer).simulateOK()) {
@@ -114,9 +103,9 @@ if ( simulationCube.copySimulationToMainCube() ) {
         rotate_Times_Cmd(rotX1, 'q');
         rotate_Times_Cmd(rotY1, 'w');
         rotate_Times_Cmd(rotZ1, 'e');
-      offsetX=xAdd1;
-      offsetY=yAdd1;
-      offsetZ=zAdd1;
+      offsetX=xPos1;
+      offsetY=yPos1;
+      offsetZ=zPos1;
 
 // place piece inside SIM CUBE 
 if (pieces.get(currPlacer).simulateOK()) {
@@ -128,9 +117,9 @@ if ( simulationCube.copySimulationToMainCube() ) {
     for (int rotY2 = 0; rotY2 < 3; rotY2++) {
       for (int rotZ2 = 0; rotZ2 < 3; rotZ2++) {
   // move 
-  for (int xAdd2=valueToExploreStart; xAdd2<valueToExploreEnd; xAdd2++) {
-    for (int yAdd2=valueToExploreStart; yAdd2<valueToExploreEnd; yAdd2++) {
-      for (int zAdd2=valueToExploreStart; zAdd2<valueToExploreEnd; zAdd2++) {
+  for (int xPos2=valueToExploreStart; xPos2<valueToExploreEnd; xPos2++) {
+    for (int yPos2=valueToExploreStart; yPos2<valueToExploreEnd; yPos2++) {
+      for (int zPos2=valueToExploreStart; zPos2<valueToExploreEnd; zPos2++) {
 
  mainCube.clear();
  resetRotation();
@@ -142,9 +131,9 @@ if ( simulationCube.copySimulationToMainCube() ) {
         rotate_Times_Cmd(rotX0, 'q');
         rotate_Times_Cmd(rotY0, 'w');
         rotate_Times_Cmd(rotZ0, 'e');
-      offsetX=xAdd0;
-      offsetY=yAdd0;
-      offsetZ=zAdd0;
+      offsetX=xPos0;
+      offsetY=yPos0;
+      offsetZ=zPos0;
 
 // place piece inside SIM CUBE 
 if (pieces.get(currPlacer).simulateOK()) {
@@ -159,9 +148,9 @@ if ( simulationCube.copySimulationToMainCube() ) {
         rotate_Times_Cmd(rotX1, 'q');
         rotate_Times_Cmd(rotY1, 'w');
         rotate_Times_Cmd(rotZ1, 'e');
-      offsetX=xAdd1;
-      offsetY=yAdd1;
-      offsetZ=zAdd1;
+      offsetX=xPos1;
+      offsetY=yPos1;
+      offsetZ=zPos1;
 
 // place piece inside SIM CUBE 
 if (pieces.get(currPlacer).simulateOK()) {
@@ -176,9 +165,9 @@ if ( simulationCube.copySimulationToMainCube() ) {
         rotate_Times_Cmd(rotX2, 'q');
         rotate_Times_Cmd(rotY2, 'w');
         rotate_Times_Cmd(rotZ2, 'e');
-      offsetX=xAdd2;
-      offsetY=yAdd2;
-      offsetZ=zAdd2;
+      offsetX=xPos2;
+      offsetY=yPos2;
+      offsetZ=zPos2;
 
 // place piece inside SIM CUBE 
 if (pieces.get(currPlacer).simulateOK()) {
@@ -190,9 +179,9 @@ if ( simulationCube.copySimulationToMainCube() ) {
     for (int rotY3 = 0; rotY3 < 3; rotY3++) {
       for (int rotZ3 = 0; rotZ3 < 3; rotZ3++) {
   // move 
-  for (int xAdd3=valueToExploreStart; xAdd3<valueToExploreEnd; xAdd3++) {
-    for (int yAdd3=valueToExploreStart; yAdd3<valueToExploreEnd; yAdd3++) {
-      for (int zAdd3=valueToExploreStart; zAdd3<valueToExploreEnd; zAdd3++) {
+  for (int xPos3=valueToExploreStart; xPos3<valueToExploreEnd; xPos3++) {
+    for (int yPos3=valueToExploreStart; yPos3<valueToExploreEnd; yPos3++) {
+      for (int zPos3=valueToExploreStart; zPos3<valueToExploreEnd; zPos3++) {
              
  mainCube.clear();
  resetRotation();
@@ -204,9 +193,9 @@ if ( simulationCube.copySimulationToMainCube() ) {
         rotate_Times_Cmd(rotX0, 'q');
         rotate_Times_Cmd(rotY0, 'w');
         rotate_Times_Cmd(rotZ0, 'e');
-      offsetX=xAdd0;
-      offsetY=yAdd0;
-      offsetZ=zAdd0;
+      offsetX=xPos0;
+      offsetY=yPos0;
+      offsetZ=zPos0;
 
 // place piece inside SIM CUBE 
 if (pieces.get(currPlacer).simulateOK()) {
@@ -221,9 +210,9 @@ if ( simulationCube.copySimulationToMainCube() ) {
         rotate_Times_Cmd(rotX1, 'q');
         rotate_Times_Cmd(rotY1, 'w');
         rotate_Times_Cmd(rotZ1, 'e');
-      offsetX=xAdd1;
-      offsetY=yAdd1;
-      offsetZ=zAdd1;
+      offsetX=xPos1;
+      offsetY=yPos1;
+      offsetZ=zPos1;
 
 // place piece inside SIM CUBE 
 if (pieces.get(currPlacer).simulateOK()) {
@@ -238,9 +227,9 @@ if ( simulationCube.copySimulationToMainCube() ) {
         rotate_Times_Cmd(rotX2, 'q');
         rotate_Times_Cmd(rotY2, 'w');
         rotate_Times_Cmd(rotZ2, 'e');
-      offsetX=xAdd2;
-      offsetY=yAdd2;
-      offsetZ=zAdd2;
+      offsetX=xPos2;
+      offsetY=yPos2;
+      offsetZ=zPos2;
 
 // place piece inside SIM CUBE 
 if (pieces.get(currPlacer).simulateOK()) {
@@ -255,9 +244,9 @@ if ( simulationCube.copySimulationToMainCube() ) {
         rotate_Times_Cmd(rotX3, 'q');
         rotate_Times_Cmd(rotY3, 'w');
         rotate_Times_Cmd(rotZ3, 'e');
-      offsetX=xAdd3;
-      offsetY=yAdd3;
-      offsetZ=zAdd3;
+      offsetX=xPos3;
+      offsetY=yPos3;
+      offsetZ=zPos3;
 
 // place piece inside SIM CUBE 
 if (pieces.get(currPlacer).simulateOK()) {
@@ -269,9 +258,9 @@ if ( simulationCube.copySimulationToMainCube() ) {
     for (int rotY4 = 0; rotY4 < 3; rotY4++) {
       for (int rotZ4 = 0; rotZ4 < 3; rotZ4++) {
   // move 
-  for (int xAdd4=valueToExploreStart; xAdd4<valueToExploreEnd; xAdd4++) {
-    for (int yAdd4=valueToExploreStart; yAdd4<valueToExploreEnd; yAdd4++) {
-      for (int zAdd4=valueToExploreStart; zAdd4<valueToExploreEnd; zAdd4++) {
+  for (int xPos4=valueToExploreStart; xPos4<valueToExploreEnd; xPos4++) {
+    for (int yPos4=valueToExploreStart; yPos4<valueToExploreEnd; yPos4++) {
+      for (int zPos4=valueToExploreStart; zPos4<valueToExploreEnd; zPos4++) {
 
  mainCube.clear();
  resetRotation();
@@ -283,9 +272,9 @@ if ( simulationCube.copySimulationToMainCube() ) {
         rotate_Times_Cmd(rotX0, 'q');
         rotate_Times_Cmd(rotY0, 'w');
         rotate_Times_Cmd(rotZ0, 'e');
-      offsetX=xAdd0;
-      offsetY=yAdd0;
-      offsetZ=zAdd0;
+      offsetX=xPos0;
+      offsetY=yPos0;
+      offsetZ=zPos0;
 
 // place piece inside SIM CUBE 
 if (pieces.get(currPlacer).simulateOK()) {
@@ -299,9 +288,9 @@ if ( simulationCube.copySimulationToMainCube() ) {
         rotate_Times_Cmd(rotX1, 'q');
         rotate_Times_Cmd(rotY1, 'w');
         rotate_Times_Cmd(rotZ1, 'e');
-      offsetX=xAdd1;
-      offsetY=yAdd1;
-      offsetZ=zAdd1;
+      offsetX=xPos1;
+      offsetY=yPos1;
+      offsetZ=zPos1;
 
 // place piece inside SIM CUBE 
 if (pieces.get(currPlacer).simulateOK()) {
@@ -315,9 +304,9 @@ if ( simulationCube.copySimulationToMainCube() ) {
         rotate_Times_Cmd(rotX2, 'q');
         rotate_Times_Cmd(rotY2, 'w');
         rotate_Times_Cmd(rotZ2, 'e');
-      offsetX=xAdd2;
-      offsetY=yAdd2;
-      offsetZ=zAdd2;
+      offsetX=xPos2;
+      offsetY=yPos2;
+      offsetZ=zPos2;
 
 // place piece inside SIM CUBE 
 if (pieces.get(currPlacer).simulateOK()) {
@@ -331,9 +320,9 @@ if ( simulationCube.copySimulationToMainCube() ) {
         rotate_Times_Cmd(rotX3, 'q');
         rotate_Times_Cmd(rotY3, 'w');
         rotate_Times_Cmd(rotZ3, 'e');
-      offsetX=xAdd3;
-      offsetY=yAdd3;
-      offsetZ=zAdd3;
+      offsetX=xPos3;
+      offsetY=yPos3;
+      offsetZ=zPos3;
 
 // place piece inside SIM CUBE 
 if (pieces.get(currPlacer).simulateOK()) {
@@ -347,9 +336,9 @@ if ( simulationCube.copySimulationToMainCube() ) {
         rotate_Times_Cmd(rotX4, 'q');
         rotate_Times_Cmd(rotY4, 'w');
         rotate_Times_Cmd(rotZ4, 'e');
-      offsetX=xAdd4;
-      offsetY=yAdd4;
-      offsetZ=zAdd4;
+      offsetX=xPos4;
+      offsetY=yPos4;
+      offsetZ=zPos4;
 
 // place piece inside SIM CUBE 
 if (pieces.get(currPlacer).simulateOK()) {
@@ -361,138 +350,11 @@ if ( simulationCube.copySimulationToMainCube() ) {
     for (int rotY5 = 0; rotY5 < 3; rotY5++) {
       for (int rotZ5 = 0; rotZ5 < 3; rotZ5++) {
   // move 
-  for (int xAdd5=valueToExploreStart; xAdd5<valueToExploreEnd; xAdd5++) {
-    for (int yAdd5=valueToExploreStart; yAdd5<valueToExploreEnd; yAdd5++) {
-      for (int zAdd5=valueToExploreStart; zAdd5<valueToExploreEnd; zAdd5++) {
+  for (int xPos5=valueToExploreStart; xPos5<valueToExploreEnd; xPos5++) {
+    for (int yPos5=valueToExploreStart; yPos5<valueToExploreEnd; yPos5++) {
+      for (int zPos5=valueToExploreStart; zPos5<valueToExploreEnd; zPos5++) {
 
-mainCube.clear();
-resetRotation();
-
-        currPlacer = arrOfIL[0];
-
-        simulationCube.clear();
-
-        // rotate x times
-        rotate_Times_Cmd(rotX0, 'q');
-        rotate_Times_Cmd(rotY0, 'w');
-        rotate_Times_Cmd(rotZ0, 'e');
-      offsetX=xAdd0;
-      offsetY=yAdd0;
-      offsetZ=zAdd0;
-
-        // clear
-        simulationCube.clear();
-
-        // place piece inside SIM CUBE
-        if (pieces.get(currPlacer).simulateOK()) {
-
-          pieces.get(currPlacer).copyPieceIntoSimulationCube();
-
-          if (simulationCube.copySimulationToMainCube()) {
-            // good result ! 
-            // simulationCube.clear();
-          } else continue; 
-        } else continue; 
-
-        currPlacer = arrOfIL[1];
-
-        simulationCube.clear();
-
-        // rotate x times
-        rotate_Times_Cmd(rotX1, 'q');
-        rotate_Times_Cmd(rotY1, 'w');
-        rotate_Times_Cmd(rotZ1, 'e');
-      offsetX=xAdd1;
-      offsetY=yAdd1;
-      offsetZ=zAdd1;
-
-        // clear
-        simulationCube.clear();
-
-        // place piece inside SIM CUBE
-        if (pieces.get(currPlacer).simulateOK()) {
-
-          pieces.get(currPlacer).copyPieceIntoSimulationCube();
-
-          if (simulationCube.copySimulationToMainCube()) {
-            // good result ! 
-            // simulationCube.clear();
-          } else continue; 
-        } else continue; 
-
-        currPlacer = arrOfIL[2];
-
-        simulationCube.clear();
-
-        // rotate x times
-        rotate_Times_Cmd(rotX2, 'q');
-        rotate_Times_Cmd(rotY2, 'w');
-        rotate_Times_Cmd(rotZ2, 'e');
-      offsetX=xAdd2;
-      offsetY=yAdd2;
-      offsetZ=zAdd2;
-      
-        // clear
-        simulationCube.clear();
-
-        // place piece inside SIM CUBE
-        if (pieces.get(currPlacer).simulateOK()) {
-
-          pieces.get(currPlacer).copyPieceIntoSimulationCube();
-
-          if (simulationCube.copySimulationToMainCube()) {
-            // good result ! 
-            // simulationCube.clear();
-          } else continue; 
-        } else continue; 
-
-        currPlacer = arrOfIL[3];
-
-        // rotate x times
-        rotate_Times_Cmd(rotX3, 'q');
-        rotate_Times_Cmd(rotY3, 'w');
-        rotate_Times_Cmd(rotZ3, 'e');
-      offsetX=xAdd3;
-      offsetY=yAdd3;
-      offsetZ=zAdd3;
-      
-        // clear
-        simulationCube.clear();
-
-        // place piece inside SIM CUBE
-        if (pieces.get(currPlacer).simulateOK()) {
-
-          pieces.get(currPlacer).copyPieceIntoSimulationCube();
-
-          if (simulationCube.copySimulationToMainCube()) {
-            // good result ! 
-            // simulationCube.clear();
-          } else continue; 
-        } else continue; 
-
-        currPlacer = arrOfIL[4];
-
-        // rotate x times
-        rotate_Times_Cmd(rotX4, 'q');
-        rotate_Times_Cmd(rotY4, 'w');
-        rotate_Times_Cmd(rotZ4, 'e');
-      offsetX=xAdd4;
-      offsetY=yAdd4;
-      offsetZ=zAdd4;
-      
-        // clear
-        simulationCube.clear();
-
-        // place piece inside SIM CUBE
-        if (pieces.get(currPlacer).simulateOK()) {
-
-          pieces.get(currPlacer).copyPieceIntoSimulationCube();
-
-          if (simulationCube.copySimulationToMainCube()) {
-            // good result ! 
-            // simulationCube.clear();
-          } else continue; 
-        } else continue; 
+        resetRotation();
 
         currPlacer = arrOfIL[5];
 
@@ -500,9 +362,9 @@ resetRotation();
         rotate_Times_Cmd(rotX5, 'q');
         rotate_Times_Cmd(rotY5, 'w');
         rotate_Times_Cmd(rotZ5, 'e');
-      offsetX=xAdd5;
-      offsetY=yAdd5;
-      offsetZ=zAdd5;
+      offsetX=xPos5;
+      offsetY=yPos5;
+      offsetZ=zPos5;
       
         // clear
         simulationCube.clear();
@@ -519,9 +381,14 @@ resetRotation();
         } else continue; 
 
   // solved ?
-  if(checkForSuccess()){
-     return; 
-  }
+  if(checkForSuccess()){   // (if solved, saving etc. is done in checkForSuccess())
+    // yes, solved 
+    // Do we search only one solution? 
+    if(flagProgramFindsOnlyFirstSolution){
+      // yes, leave here (else continue)
+      return; 
+    }//if
+  }//if
   
 }
 }

@@ -3,12 +3,16 @@
 
 void startSolver() { 
   // start Solver   
-  println("solving...."); 
+  println("Start solving "
+    +dateTimeStampLong()
+    +"."); 
   mainCube.clear();
   simulationCube.clear();
   usedPiecesClear();
   background(90); 
-  text("Solving...", 200, 200);
+  text("Solving...\n\n\nplease note that he finds identical solutions which are just the rotated cube", 
+    200, 200, 
+    width-300, 900);
   state=STATE_SOLVE;
 }
 
@@ -33,12 +37,13 @@ boolean checkForSuccess() {
   if (mainCube.countPieces() == 27) {        
     //solved
     foundSolutions++;
+    msgError="";
     print("\nSUCCESS. Found "
       + foundSolutions
-      + " solution. Time: " 
+      + " solution(s). Time: " 
       + dateTimeStampLong()
       + ".");
-    mainCube.save1();
+    mainCube.save1(); // save 
     state=STATE_NORMAL;
     msgError="";
     return true;
@@ -47,26 +52,4 @@ boolean checkForSuccess() {
   return false;
   //
 }//func 
-
-int usedPiecesCounter() {
-  // SOLVER 
-  // how many of the 6 pieces are in use? 
-  int counter=0; 
-  for (int i=0; i<usedPieces.length; i++) {
-    if (usedPieces[i]) 
-      counter++;
-  }
-  return counter;
-}
-
-void rotate1( char command1 ) {
-  // SOLVER 
-  if (currPlacer==-1)
-    return;
-
-  // rotate 
-  simulationCube.clear();
-  pieces.get(currPlacer).rotate(command1);
-  pieces.get(currPlacer).copyPieceIntoSimulationCube();
-}
 //

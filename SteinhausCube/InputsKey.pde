@@ -15,29 +15,39 @@ void keyPressed () {
     break; 
 
   case STATE_PREPARE_SOLVE:
-    if (key=='y') {
-      startSolver();
-    } else if (key == 'n' || key == ESC) { 
-      state=STATE_NORMAL;
-      key=0;// kill Escape
-    }
+    keyPressedForSTATE_STATE_PREPARE_SOLVE();   
     break; 
 
   case STATE_SOLVE: 
-    // 
     key=0; // kill Escape
     break;
 
   default:
     //error
-    println ("Error 127 ++++++++++"); 
+    println ("Error 127, tab InputsKey ++++++++++"); 
     exit(); 
     break;
     //
   } // switch
-}//func 
+} //func 
 
 // ------------------------------------------------------------------
+
+void keyPressedForSTATE_STATE_PREPARE_SOLVE() {
+  // screen with a question, do you want to start solving? 
+  if (key=='y') {
+    // yes, solve
+    startSolver();
+  } else if (key == 'n' || key == ESC) {
+    // no, abort 
+    state=STATE_NORMAL;
+    key=0;// kill Escape
+  } else if (key == 'k') {
+    // letter k: toggle 
+    flagProgramFindsOnlyFirstSolution = 
+      !flagProgramFindsOnlyFirstSolution;
+  }
+}//func 
 
 void keyPressedForSTATE_LOAD_SOLUTION() {
 
@@ -45,16 +55,21 @@ void keyPressedForSTATE_LOAD_SOLUTION() {
     // coded key
 
     boolean hasChangedCrs=false; 
+    errText = "";
 
     if (keyCode==LEFT) {
       alFiles_i--;
-      if (alFiles_i<0)
+      if (alFiles_i<0) {
         alFiles_i=0;
+        errText = "first file";
+      }  
       hasChangedCrs=true;
     } else if  (keyCode==RIGHT) {
       alFiles_i++; 
-      if (alFiles_i>=alFiles.size())
+      if (alFiles_i>=alFiles.size()) {
         alFiles_i=alFiles.size()-1;
+        errText = "last file";
+      }
       hasChangedCrs=true;
     }//else if
 
@@ -62,26 +77,38 @@ void keyPressedForSTATE_LOAD_SOLUTION() {
       // load solution file 
       loadSolutionFile();
     }//if
-    return;
+    //
+    return; // leave here (coded keys) 
+    //
   }//if
 
   //---
+  //only not coded keys here :  
 
-  if (key=='#'||key==ESC) { 
+  if (key=='#'||key==ESC) {
+    // go back to main screen; 
     // key # toggles (see other function keyPressedForStateNormal())
-    // load solution file 
     mainCube.clear();
     state=STATE_NORMAL;
     key=0; // kill Escape
-  }// 
-  else if (key=='+') {
-    showSolutionAsExploded_View_Drawing = !showSolutionAsExploded_View_Drawing;
+  } else if (key=='+') {
+    showSolutionAsExploded_View_Drawing = 
+      !showSolutionAsExploded_View_Drawing;
   } else if (key>='0' && key<='5') {
+    // array of exploded status for each piece
     int index_Piece = int(key+""); 
-    explodeViewAllowed[index_Piece] = !explodeViewAllowed[index_Piece] ;
+    explodeViewAllowed[index_Piece] = 
+      !explodeViewAllowed[index_Piece];
   } else if (key==' ') {
-    flagShowExploded = !flagShowExploded;
-  }
+    // space bar 
+    flagShowExploded = 
+      !flagShowExploded;
+  } else if (key=='r') {
+    // letter r
+    mainCubeRotate = 
+      !mainCubeRotate;
+  }//else if
+
   // 
   key=0; // kill Escape
 }//func 
@@ -143,11 +170,9 @@ void keyPressedForStateNormal() {
       changed=true;
     } 
     //
-    else if (key=='#') { // key #
+    else if (key=='#') { 
       // load solution file 
-      // loadSolutionFile();
-      mainCube.load(fileNameSolution);
-      alFileName=fileNameSolution;
+      loadSolutionFile();
       state=STATE_LOAD_SOLUTION;
     }//else if 
     // 

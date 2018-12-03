@@ -1,7 +1,7 @@
 
 // a invisible cube for simulation. 
 // When placing and moving a piece, it is placed in this cube first. 
-// When hitting return, the cube gets copied into the main cube 
+// When hitting return, the cube gets copied into the main cube.
 
 class SimulationCube {
 
